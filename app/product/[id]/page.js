@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import {useCartStore} from "@/store/useCartStore";
+import useCartStore from "@/store/useCartStore";
 import Header from "@/components/Header";
 import products from "../../../data/product";
 

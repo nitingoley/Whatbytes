@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import { persist, createJSONStorage } from 'zustand/middleware';
 
 const useCartStore = create(
   persist(
@@ -32,10 +32,19 @@ const useCartStore = create(
     }),
     {
       name: 'cart-storage',
-      getStorage: () => localStorage,
+      storage: createJSONStorage(() => {
+     
+        if (typeof window !== 'undefined') {
+          return localStorage;
+        }
+        return {
+          getItem: () => null,
+          setItem: () => {},
+          removeItem: () => {},
+        };
+      }),
     }
   )
 );
-
 
 export default useCartStore;

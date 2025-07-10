@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-
 import Sidebar from "@/components/Sidebar";
 import ProductCard from "@/components/ProductCard";
 import products from "../data/product"
