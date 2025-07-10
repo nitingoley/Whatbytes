@@ -8,15 +8,12 @@ const nextConfig = {
       'encrypted-tbn0.gstatic.com'
     ],
   },
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
     ignoreBuildErrors: true,
-  }
+  },
 };
 
 export default nextConfig;
