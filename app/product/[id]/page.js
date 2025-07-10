@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import useCartStore from "@/store/useCartStore";
 import Header from "@/components/Header";
 import products from "../../../data/product";
-
+import Image from 'next/image';
 
 
 // products
@@ -34,7 +34,7 @@ const ProductDetail = () => {
       <div className="container mx-auto py-8 px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-white p-4 rounded-lg shadow">
-            <img
+            <Image
               src={product.image}
               alt={product.title}
               className="w-full h-auto max-h-96 object-contain rounded"

@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
 import ProductCard from "@/components/ProductCard";
-import products from "../data/product"
+import Header from "@/components/Header";
+import products from "@/data/products";
 
-const Home = () => {
+function ProductGrid() {
   const searchParams = useSearchParams();
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -45,25 +46,33 @@ const Home = () => {
   }, [searchParams]);
 
   return (
+    <>
+      {filteredProducts.length === 0 ? (
+        <div className="text-center py-12">
+          <p className="text-lg mb-4">No products found</p>
+          <p>Try adjusting your search or filter criteria</p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
+
+const Home = () => {
+  return (
     <div className="min-h-screen">
-     
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col lg:flex-row gap-8">
           <Sidebar />
-          
           <main className="flex-1">
-            {filteredProducts.length === 0 ? (
-              <div className="text-center py-12">
-                <p className="text-lg mb-4">No products found</p>
-                <p>Try adjusting your search or filter criteria</p>
-              </div>
-            ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
-              </div>
-            )}
+            <Suspense fallback={<div className="text-center py-12">Loading products...</div>}>
+              <ProductGrid />
+            </Suspense>
           </main>
         </div>
       </div>
