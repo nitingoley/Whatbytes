@@ -1,6 +1,11 @@
+import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Sidebar from '@/components/Sidebar';
-import ProductGrid from '@/components/ProductGrid';
+
+// Dynamically import ProductGrid and disable SSR for it
+const ProductGrid = dynamic(() => import('@/components/ProductGrid'), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
