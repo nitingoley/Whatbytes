@@ -1,7 +1,6 @@
-
-import { Suspense } from "react";
-import Sidebar from "@/components/Sidebar";
-import ProductGrid from "@/components/ProductGrid";
+import { Suspense } from 'react';
+import Sidebar from '@/components/Sidebar';
+import ProductGrid from '@/components/ProductGrid';
 
 export default function Home() {
   return (

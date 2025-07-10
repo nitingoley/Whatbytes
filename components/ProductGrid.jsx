@@ -1,9 +1,8 @@
-"use client";
-
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import ProductCard from "@/components/ProductCard";
-import products from "../data/product";
+'use client';
+import { useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
+import ProductCard from '@/components/ProductCard';
+import products from '../data/product';
 
 const ProductGrid = () => {
   const searchParams = useSearchParams();
