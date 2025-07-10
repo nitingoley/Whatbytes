@@ -1,8 +1,10 @@
+'use client';
+
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Sidebar from '@/components/Sidebar';
 
-// Dynamically import ProductGrid and disable SSR for it
+// ✅ Safe to use now
 const ProductGrid = dynamic(() => import('@/components/ProductGrid'), {
   ssr: false,
 });
