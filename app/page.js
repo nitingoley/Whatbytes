@@ -3,8 +3,7 @@ import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
 import ProductCard from "@/components/ProductCard";
-import Header from "@/components/Header";
-import products from "@/data/products";
+import products from "../data/product";
 
 function ProductGrid() {
   const searchParams = useSearchParams();
